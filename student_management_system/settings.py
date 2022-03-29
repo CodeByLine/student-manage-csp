@@ -154,6 +154,7 @@ except ImportError:
     print("Looks like no local file. You must be on production")
 
 STATICFILES_STORAGE='whitenoise.django.GzipManifestStaticFilesStorage'
+
 import dj_database_url
-prod_db=dj_database_url.config(conn_max_ag=500)
+prod_db=dj_database_url.config(conn_max_age=500, ssl_require=True)
 DATABASES['default'].update(prod_db) 
