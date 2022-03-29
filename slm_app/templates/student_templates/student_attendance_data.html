@@ -1,0 +1,53 @@
+
+{% extends 'student_templates/base_template.html' %}
+{% load static %}
+
+{% block page_title %} Student Attendance Data {% endblock page_title %}
+
+{% block main_content %}
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8" style="margin: 0 auto;">
+          <h2>Student Attendance Data</h2>
+        <br>
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">View Attendance</h3>
+          </div> <!-- /.card-header -->
+          <!-- form start -->
+
+          <div class="card-body">
+            <div class="row">
+              {% for attendance_report in attendance_reports %}
+              <div class="col-lg-3 attendance_div">
+                Date : <b>{{ attendance_report.attendance_id.attendance_date }}</b>
+                <br>
+                {% if attendance_report.status == True %}
+                [ Status : <b>Present ]</b>
+                {% else %}
+                [ Status : <b><span style="color: red">Absent</span> ]</b>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+         </div> <!-- /.card-body -->
+
+            <div class="card-footer" style="padding: 0;">
+              <button type="submit" class="btn btn-primary btn-block" id="fetch_attendance">Fetch Attendance</button>
+            </div>
+            <div id="student_data"> 
+            </div>
+        </div>  <!-- card-primary -->
+        </div>  <!-- col-md-8 -->
+    </div>  <!-- row -->
+       
+  </div>
+</section>
+
+
+{% endblock main_content %}
+  
+<!-- /.content -->

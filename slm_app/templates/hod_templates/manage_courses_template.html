@@ -1,0 +1,78 @@
+{% extends './base_template.html' %}
+{% load static %}
+{% block page_title %}
+Manage Courses
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">All Courses of Study</h3>
+
+                  <div class="card-tools">      <!-- search -->
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ./card-header -->
+                <div class="card-body">
+                  <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Course Name</th>                        
+                        <th>Created On</th>
+                        <th>Updated On</th>
+                        <th>Action</th>  
+                        <th>Note</th>                      
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for course in courses %}
+                      <tr data-widget="expandable-table" aria-expanded="false">
+                        <td>{{ course.id }}</td>                        
+                        <td>{{ course.course_name }}</td>                        
+                        <td>{{ course.created_at }}</td>                        
+                        <td>{{ course.updated_at }}</td>
+                        <td> <a href="{% url 'edit_course' course_id=course.id %}" class="btn btn-success">Edit</a>
+                        </td>
+                        <td>Note</td>
+                      </tr>
+                      
+                      <tr class="expandable-body">
+                        <td colspan="9">
+                          <p>
+                            <strong>Additional notes: </strong>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                          </p>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div> <!-- col-12 -->
+            </div>   <!-- row -->
+      </div>  <!-- container-fluid -->
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

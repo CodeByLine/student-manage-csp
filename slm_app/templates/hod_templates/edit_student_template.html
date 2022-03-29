@@ -1,0 +1,33 @@
+{% extends './base_template.html' %}
+{% load static %}
+
+{% block page_title %}
+Edit Student | Username : {{ username }} | #ID : {{ id }}
+{% endblock page_title %}
+{% block main_content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8" style="margin: 0 auto;">
+        
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Edit Student</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+        <!-- content -->
+        {% url 'edit_student_save' as action_path %}
+        {% include 'hod_templates/form_template.html' with messages=messages form=form action_path=action_path button_text='Update Student' %}
+        <!-- content -->
+        
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary btn-block">Update Student</button>
+        </div>
+            </div> <!-- card card-primary -->
+          </div> <!-- col-md-8 -->
+        </div>
+    </div>
+
+</section>
+{% endblock main_content %}

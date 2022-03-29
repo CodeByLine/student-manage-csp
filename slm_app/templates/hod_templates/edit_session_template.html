@@ -1,0 +1,87 @@
+{% extends './base_template.html' %}
+{% load static %}
+{% block page_title %}
+Edit Session Details
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-8" style="margin: 0 auto;">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Edit Session {{ session.id}} | Dates {{ session.session_start_year }} – {{ session.session_end_year }}</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action='/edit_session_save' method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">      <!-- subject name -->
+                    <div class="form-group">
+                      <label>Session Start Year </label>
+                    <input type="date" class="form-control" name="session_start" placeholder="{{session.session_start}}" value="{{session.session_start}}">
+                    
+                    </div>
+                    <div class="form-group">
+                      <label>Session End Year </label>
+                    <input type="date" class="form-control" name="session.session_end_year" value="{{session.session_end_year}}">
+                    
+                    </div>
+                    
+                </div>
+
+                  <div class="form-group"> <!-- select subject -->
+                    <label>Course</label>
+                    <select class="form-control" name="course">
+                        {% for course in courses %}
+                      <option value="{{ course.id }}" {% if course.id == subject.course_id.id %} selected {% endif %} >{{ course.course_name }} </option>
+                      
+                        {% endfor %}        
+                        <input type="hidden" class="form-control" name="course_id" placeholder="" value="{{course.id}}">
+                      </select>
+                  </div>
+
+                  <div class="form-group"> <!-- select staff -->
+                    <label>Staff</label>
+                    <select class="form-control" name="staff">
+                        {% for staff in staffs %}
+                      <option value="{{ staff.id }}" {% if staff.id == subject.staff_id.id %} selected {% endif %} >{{ staff.first_name }} {{ staff.last_name }} </option>
+                        {% endfor %}        
+                    </select>
+                  </div>
+
+                    
+                  <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                  </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer" style="padding: 0;">
+                  <button type="submit" class="btn btn-primary btn-block">Update Subject</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

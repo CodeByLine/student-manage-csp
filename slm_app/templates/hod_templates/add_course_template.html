@@ -1,0 +1,56 @@
+{% extends './base_template.html' %}
+{% load static %}
+{% block page_title %}
+Add Course
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">         
+              <div class="col-md-8" style="margin: 0 auto;">
+            <!-- general form elements -->
+              <h4>Note: "Course" here refers to "course of study"</h4><br>
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add A Course of Study</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/add_course_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Name of Course of Study</label>
+                    <input type="text" class="form-control" name="course" placeholder="Enter course name">
+                  </div>
+                    
+                  <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                  </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer" style="padding: 0;">
+                  <button type="submit" class="btn btn-primary btn-block">Add Course</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
