@@ -1,4 +1,4 @@
-"""student_management_system URL Configuration
+"""student_manage_csp URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
-from student_management_system import settings
+from student_manage_csp import settings
 from slm_app import views, HodViews, StaffViews, StudentViews
 from django.urls import reverse
 
