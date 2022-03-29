@@ -145,8 +145,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL="slm_app.CustomUser" #needed to avoid 'User.groups' clash
 
 
-from dotenv import load_dotenv
-load_dotenv()
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 try:
     from .local_settings import *
