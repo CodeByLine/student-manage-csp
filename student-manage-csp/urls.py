@@ -1,8 +1,8 @@
 
+from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
-from student_manage_csp import settings
 from slm_app import EditResultViewClass, views, HodViews, StaffViews, StudentViews
 from django.urls import reverse
 

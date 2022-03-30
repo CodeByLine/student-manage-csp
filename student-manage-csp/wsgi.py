@@ -1,5 +1,5 @@
 """
-WSGI config for sstudent_manage_csp project.
+WSGI config for sstudent-manage-csp project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'student_manage_csp.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'student-manage-csp.settings')
 
 application = get_wsgi_application()
