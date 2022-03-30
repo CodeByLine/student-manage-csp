@@ -147,7 +147,7 @@
         <!-- BAR CHART -->
         <div class="card card-warning">
           <div class="card-header">
-            <h3 class="card-title">Bar Chart</h3>
+            <h3 class="card-title">Staff Attendance/Absence</h3>
 
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -241,14 +241,14 @@
           options: donutOptions
         });
 
-    // var student_count_list_in_course ={{ student_count_list_in_course }};
+    var student_count_list_in_course ={{ student_count_list_in_course }};
     // var course_list={{ course_list|safe}}
     var pieData2 = {
         labels: course_name_list,
         datasets: [
           {
-            // data: student_count_list_in_course,
-            data: [700,500,400,600,300,100, 200],
+            data: student_count_list_in_course,
+            // data: [700,500,400,600,300,100, 200],
             backgroundColor : ['#aa00ff','#f56954', '#00a65a','#aa00ff', '#ff3d00','#00a65a'],
           }
         ]
@@ -273,22 +273,15 @@
     //- BAR CHART -
     //-------------
 
+  var attendance_present_list_staff={{ attendance_present_list_staff }};
+  var attendance_absent_list_staff={{ attendance_absent_list_staff }};
+  var staff_name_list={{staff_name_list|safe}}
   var barChartData2 = {
-    labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels  : staff_name_list,
     datasets: [
+
       {
-        label               : 'Digital Goods',
-        backgroundColor     : 'rgba(60,141,188,0.9)',
-        borderColor         : 'rgba(60,141,188,0.8)',
-        pointRadius          : false,
-        pointColor          : '#3b8bba',
-        pointStrokeColor    : 'rgba(60,141,188,1)',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : [28, 48, 40, 19, 86, 27, 90]
-      },
-      {
-        label               : 'Electronics',
+        label               : 'Absence',
         backgroundColor     : 'rgba(210, 214, 222, 1)',
         borderColor         : 'rgba(210, 214, 222, 1)',
         pointRadius         : false,
@@ -296,7 +289,18 @@
         pointStrokeColor    : '#c1c7d1',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        data                : [65, 59, 80, 81, 56, 55, 40]
+        data                : attendance_absent_list_staff
+      },
+      {
+        label               : 'Attendance',
+        backgroundColor     : 'rgba(60,141,188,0.9)',
+        borderColor         : 'rgba(60,141,188,0.8)',
+        pointRadius          : false,
+        pointColor          : '#3b8bba',
+        pointStrokeColor    : 'rgba(60,141,188,1)',
+        pointHighlightFill  : '#fff',
+        pointHighlightStroke: 'rgba(60,141,188,1)',
+        data                : attendance_present_list_staff
       },
     ]
   }

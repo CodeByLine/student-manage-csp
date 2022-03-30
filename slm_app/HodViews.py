@@ -25,7 +25,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def admin_home(request):
-    student_count=Student.objects.all().count()
+    student_count1=Student.objects.all().count()
     staff_count=Staff.objects.all().count()
     subject_count=Subject.objects.all().count()
     course_count=Course.objects.all().count()
@@ -76,7 +76,7 @@ def admin_home(request):
         student_name_list.append(student.admin.username)
 
     context={
-        "student_count" : student_count,
+        "student_count" : student_count1,
         "staff_count" : staff_count,
         "subject_count" : subject_count,
         "course_count" : course_count,
@@ -84,7 +84,7 @@ def admin_home(request):
         "subject_count_list" : subject_count_list,
         "student_count_list_in_course" : student_count_list_in_course,
         "course" : course,
-        "student_count" : student_count,
+        
         "subject_list" :  subject_list,
         "student_count_list_in_subject" : student_count_list_in_subject,
         "staff_name_list":staff_name_list,
