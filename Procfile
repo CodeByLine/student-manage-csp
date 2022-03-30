@@ -1,1 +1,1 @@
-web:gunicorn student_manage_csp.wsgi --log-file -
+web: gunicorn student-manage-csp.wsgi --log-file -
