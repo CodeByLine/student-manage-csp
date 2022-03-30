@@ -34,7 +34,8 @@ MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
-STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 AUTH_USER_MODEL='slm_app.CustomUser'
 AUTHENTICATION_BACKENDS = [
@@ -153,7 +154,9 @@ try:
 except ImportError:
     print("Looks like no local file. You must be on production")
 
+from whitenoise import WhiteNoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 import dj_database_url
 prod_db=dj_database_url.config(conn_max_age=500)
