@@ -27,7 +27,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['student-manage-csp.herokuapp.com']
 # ALLOWED_HOSTS = ["student-manage-csp.herokuapp.com"]
 
 MEDIA_URL='/media/'
