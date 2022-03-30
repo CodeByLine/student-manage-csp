@@ -1,2 +1,2 @@
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [student-manage-csp.herokuapp.com]
