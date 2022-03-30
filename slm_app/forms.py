@@ -23,9 +23,9 @@ class AddStudentForm(forms.Form):
         course_list=[]
 
 
-    sessions=SessionYearModel.objects.all()
     session_list=[]
-    try:                     
+    try:          
+        sessions=SessionYearModel.objects.all()           
         for ses in sessions:
             sml_session = (ses.id, str(ses.session_start_year)+" TO "+str(ses.session_end_year))
             session_list.append(sml_session)

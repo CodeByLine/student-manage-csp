@@ -35,6 +35,7 @@ def admin_home(request):
     subject_count_list=[]
     student_count_list_in_course=[]
     for course in course_all:
+        course = Course.objects.get(id=course.id)
         subjects=Subject.objects.filter(course_id=course.id).count()
         students=Student.objects.filter(course_id=course.id).count()
         course_name_list.append(course.course_name)
@@ -44,7 +45,6 @@ def admin_home(request):
     subjects_all=Subject.objects.all()
     subject_list=[]
     student_count_list_in_subject=[]
-
     for subject in subjects_all:
         course=Course.objects.get(id=subject.course_id.id)
         student_count=Student.objects.filter(course_id=course.id).count()
@@ -254,10 +254,9 @@ def add_session(request):
 def add_session_save(request):
     if request.method != "POST":
         return HttpResponseRedirect(reverse('manage_sessions'))
-    else:
-        
-        session=SessionYearModel.objects.get(id=session_year_id)
-        session_year_id=SessionYearModel.objects.get("session")
+    else:    
+        # session=SessionYearModel.objects.get(id=session_id)
+        # session_year_id=SessionYearModel.objects.get("session")
         session_start_year=request.POST.get("session_start")
         session_end_year=request.POST.get("session_end")
 
