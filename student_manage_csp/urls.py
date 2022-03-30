@@ -1,23 +1,9 @@
-"""student_manage_csp URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from student_manage_csp import settings
-from slm_app import views, HodViews, StaffViews, StudentViews
+from slm_app import EditResultViewClass, views, HodViews, StaffViews, StudentViews
 from django.urls import reverse
 
 urlpatterns = [
@@ -89,6 +75,11 @@ urlpatterns = [
     path('staff_feedback_save', StaffViews.staff_feedback_save, name="staff_feedback_save"),
     path('staff_profile', StaffViews.staff_profile, name="staff_profile"),
     path('staff_profile_save', StaffViews.staff_profile_save, name="staff_profile_save"),
+    path('staff_profile_save', StaffViews.staff_profile_save, name="staff_profile_save"),
+    # path('staff_add_result', StaffViews.staff_add_result, name="staff_add_result"),
+    # path('save_student_result', StaffViews.save_student_result, name="save_student_result"),
+    # path('edit_student_result', EditResultViewClass.as_view, name="save_student_result"),
+
 
     # student URL paths
     path('student_home', StudentViews.student_home, name="student_home"),

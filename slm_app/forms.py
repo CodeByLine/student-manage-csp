@@ -90,3 +90,32 @@ class EditStudentForm(forms.Form):
     date_joined=forms.DateField(label="Date Joined",widget=DateInput(attrs={"class":"form-control"}))
     profile_pic=forms.FileField(label="Profile Pic", widget=forms.FileInput(attrs={"class":"form-control"}),required=False)
     note=forms.CharField(label="Note", max_length=150, widget=forms.TextInput(attrs={'class':'form-control'}),required=False)
+
+class EditResultForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self.staff_id=kwargs.pop("staff_id")
+        super().__init__()
+        subject_list=[]
+        try:
+            subjects=Subject.objects.filter(staff_id=self.staff_id)
+            for subject in subjects:
+                subject_single=(subject.id,subject.subject_name)
+                subject_list.append(subject_single)
+        except:
+            subject_list=[]
+        
+        session_list=[]
+        try:
+            sessions=SessionYearModel.objects.all()
+            for session in sessions:
+                session_single=(session.id,session.session_start_year+" TO "+session.session_end_year)
+                session_list.append(session_single)
+        except:
+            session_list=[]
+        
+        self.subject_id=forms.ChoiceField(lable="Subject",choices=subject_list,widget=forms.Select(attrs={"class":"form-control"}))
+        self.session_id=forms.ChoiceField(lable="Session Year",choices=subject_list,widget=forms.Select(attrs={"class":"form-control"}))
+        self.student_id=forms.ChoiceField(lable="Student",widget=forms.Select(attrs={"class":"form-control"}))
+        self.assignment_marks=forms.CharField(lable="Assignment Marks",widget=forms.TextInput(attrs={"class":"form-control"}))
+        self.exam_marks=forms.CharField(lable="Exam Marks",widget=forms.TextInput(attrs={"class":"form-control"}))
+
