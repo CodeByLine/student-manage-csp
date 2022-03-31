@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'slm_app',
     'crispy_forms',
     # 'adminlte_full',
-    # 'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -150,7 +150,7 @@ try:
 except ImportError:
     print("Looks like no local file. You must be on production")
 
-# from whitenoise import WhiteNoise
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 MEDIA_URL='/media/'
