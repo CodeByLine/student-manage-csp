@@ -50,7 +50,7 @@ EMAIL_FILE_PATH=os.path.join(BASE_DIR, "sent_mails")
 # Application definition
 
 INSTALLED_APPS = [
-    'adminlte3',
+    # 'adminlte3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
