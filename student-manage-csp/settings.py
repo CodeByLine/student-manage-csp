@@ -35,7 +35,8 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 # STATIC_ROOT=os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 AUTH_USER_MODEL='slm_app.CustomUser'
 AUTHENTICATION_BACKENDS = [
@@ -49,6 +50,7 @@ EMAIL_FILE_PATH=os.path.join(BASE_DIR, "sent_mails")
 # Application definition
 
 INSTALLED_APPS = [
+    'adminlte3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -154,8 +156,8 @@ try:
 except ImportError:
     print("Looks like no local file. You must be on production")
 
-from whitenoise import WhiteNoise
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# from whitenoise import WhiteNoise
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 import dj_database_url
