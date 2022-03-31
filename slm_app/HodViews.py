@@ -23,8 +23,10 @@ from slm_app.models import (
                             )
 from django.views.decorators.csrf import csrf_exempt
 
-
 def admin_home(request):
+    return HttpResponse("OK")
+
+def admin_home1(request):
     student_count1=Student.objects.all().count()
     staff_count=Staff.objects.all().count()
     subject_count=Subject.objects.all().count()
