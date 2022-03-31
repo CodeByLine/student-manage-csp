@@ -30,17 +30,6 @@ DEBUG = False
 ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000','student-manage-csp.herokuapp.com']
 # ALLOWED_HOSTS = []
 
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
-
-STATIC_URL = '/static/'
-# STATIC_ROOT=os.path.join(BASE_DIR, 'static')
-# STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 AUTH_USER_MODEL='slm_app.CustomUser'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -63,6 +52,7 @@ INSTALLED_APPS = [
     'slm_app',
     'crispy_forms',
     # 'adminlte_full',
+    # 'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -163,6 +153,19 @@ except ImportError:
 # from whitenoise import WhiteNoise
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  #fr college2
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #fr college2
+STATIC_URL = '/static/'
+# STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static")
+#     # os.path.join(BASE_DIR, "staticfiles")
+# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 import dj_database_url
 prod_db=dj_database_url.config(conn_max_age=500)
